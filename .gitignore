@@ -1,0 +1,10 @@
+
+videos/*.mp4
+videos/*.mov
+videos/*.webm
+!videos/motion-graphics-05.mp4
+!videos/promo-video-03.mp4
+!videos/promo-video-04.mp4
+!videos/promo-video-05.mp4
+!videos/promo-video-06.mp4
+!videos/promo-video-08.mp4

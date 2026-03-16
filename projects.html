@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Projects Gallery</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Portfolio Projects Gallery</h1>
+        <div class="row">
+            <!-- Branding & Logo Design Portfolio -->
+            <div class="col-md-4 mb-4">
+                <h4>Branding & Logo Design</h4>
+                <a href="#branding-gallery" class="portfolio-popup-gallery" data-gallery="branding">
+                    <img src="images/project-4.jpg" alt="Branding & Logo Design" class="img-fluid rounded shadow">
+                </a>
+            </div>
+            <!-- Video Production & Editing Portfolio -->
+            <div class="col-md-4 mb-4">
+                <h4>Video Production & Editing</h4>
+                <a href="#video-gallery" class="portfolio-popup-gallery" data-gallery="video">
+                    <img src="images/project-6.jpg" alt="Video Production & Editing" class="img-fluid rounded shadow">
+                </a>
+            </div>
+            <!-- Poster & Flyer Design Portfolio -->
+            <div class="col-md-4 mb-4">
+                <h4>Poster & Flyer Design</h4>
+                <a href="#poster-gallery" class="portfolio-popup-gallery" data-gallery="poster">
+                    <img src="images/project-1.jpg" alt="Poster & Flyer Design" class="img-fluid rounded shadow">
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Engineering Portfolio -->
+            <div class="col-md-6 mb-4">
+                <h4>Engineering Portfolio</h4>
+                <a href="#engineering-gallery" class="portfolio-popup-gallery" data-gallery="engineering">
+                    <img src="images/project-5.jpg" alt="Engineering Portfolio" class="img-fluid rounded shadow">
+                </a>
+            </div>
+            <!-- Previous Clients Portfolio -->
+            <div class="col-md-6 mb-4">
+                <h4>Previous Clients</h4>
+                <a href="#clients-gallery" class="portfolio-popup-gallery" data-gallery="clients">
+                    <img src="images/project-2.jpg" alt="Previous Clients Portfolio" class="img-fluid rounded shadow">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden galleries for Magnific Popup -->
+    <div id="branding-gallery" class="d-none">
+        <a href="images/project-4.jpg" title="Logo Design Sample 1"></a>
+        <a href="images/project-1.jpg" title="Logo Design Sample 2"></a>
+        <a href="images/project-2.jpg" title="Branding Sample"></a>
+    </div>
+    <div id="video-gallery" class="d-none">
+        <a href="images/project-6.jpg" title="Video Production Sample"></a>
+        <a href="images/project-3.jpg" title="Video Editing Sample"></a>
+    </div>
+    <div id="poster-gallery" class="d-none">
+        <a href="images/project-1.jpg" title="Poster Sample"></a>
+        <a href="images/project-2.jpg" title="Flyer Sample"></a>
+    </div>
+    <div id="engineering-gallery" class="d-none">
+        <a href="images/project-5.jpg" title="Engineering Sample"></a>
+        <a href="images/project-2.jpg" title="3D Modeling Sample"></a>
+    </div>
+    <div id="clients-gallery" class="d-none">
+        <a href="images/project-2.jpg" title="Client Photo Editing"></a>
+        <a href="images/project-1.jpg" title="Client Design"></a>
+    </div>
+
+    <!-- JS dependencies -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.portfolio-popup-gallery').on('click', function(e) {
+                e.preventDefault();
+                var galleryId = $(this).data('gallery');
+                var items = [];
+                $('#' + galleryId + '-gallery a').each(function() {
+                    items.push({
+                        src: $(this).attr('href'),
+                        title: $(this).attr('title')
+                    });
+                });
+                $.magnificPopup.open({
+                    items: items,
+                    gallery: { enabled: true },
+                    type: 'image',
+                    closeOnContentClick: true,
+                    mainClass: 'mfp-img-mobile',
+                    image: {
+                        verticalFit: true,
+                        titleSrc: 'title'
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
