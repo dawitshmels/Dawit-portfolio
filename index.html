@@ -725,8 +725,24 @@
             cinematic08: 'https://res.cloudinary.com/dcj05vkkh/video/upload/v1773611644/cinematic-editing-08_efsojt.mp4'
           };
 
+          window.optimizeCloudinaryVideoUrl = function(url) {
+            if (!url || typeof url !== 'string') {
+              return '';
+            }
+
+            if (url.indexOf('res.cloudinary.com') === -1) {
+              return url;
+            }
+
+            if (url.indexOf('/video/upload/f_auto,q_auto/') !== -1) {
+              return url;
+            }
+
+            return url.replace('/video/upload/', '/video/upload/f_auto,q_auto/');
+          };
+
           window.getVideoSource = function(key) {
-            return window.VIDEO_SOURCES[key] || '';
+            return window.optimizeCloudinaryVideoUrl(window.VIDEO_SOURCES[key] || '');
           };
 
           window.applyVideoSources = function(root) {
