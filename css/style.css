@@ -142,20 +142,10 @@
   background: #F96D00;
   color: #222;
 }
-/* Disable pointer events on main content when modal is open */
-.mega-modal-open nav,
-.mega-modal-open section,
-.mega-modal-open footer {
-  pointer-events: none;
-}
-.mega-modal-open #megaProjectModal {
-  pointer-events: auto;
-}
-.project-popup-open body {
-  pointer-events: none;
-}
-.project-popup-open .project-popup-modal {
-  pointer-events: auto;
+/* Lock body scroll only while project overlays are open */
+body.mega-modal-open,
+body.project-popup-open {
+  overflow: hidden;
 }
 /* Magnific Popup Z-Index Fix */
 .mfp-bg, .mfp-wrap {
@@ -10011,3 +10001,126 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+/* Mobile layout fixes for custom portfolio sections */
+@media (max-width: 767.98px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .owl-carousel.home-slider,
+  .owl-carousel.home-slider .slider-item,
+  .owl-carousel.home-slider .slider-item .slider-text {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .owl-carousel.home-slider .slider-item .slider-text {
+    padding-top: 120px;
+    padding-bottom: 80px;
+  }
+
+  .owl-carousel.home-slider .slider-item .slider-text h1 {
+    font-size: 34px;
+  }
+
+  .owl-carousel.home-slider .slider-item .slider-text h2 {
+    font-size: 22px;
+  }
+
+  .owl-carousel.home-slider .slider-item .slider-text p {
+    font-size: 16px;
+  }
+
+  .owl-carousel.home-slider .slider-item .slider-text p .btn {
+    display: block;
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+
+  .cinematic-btn {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+
+  #megaProjectModal {
+    padding: 10px;
+  }
+
+  .mega-modal-content {
+    margin: 16px auto;
+    padding: 18px 14px;
+    border-radius: 12px;
+  }
+
+  .mega-close {
+    top: 10px;
+    right: 12px;
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .mega-filter-menu {
+    gap: 10px;
+    margin-bottom: 18px;
+    justify-content: flex-start;
+  }
+
+  .mega-filter-btn {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+  }
+
+  .mega-project-grid {
+    gap: 12px;
+  }
+
+  .mega-project-card {
+    min-width: 220px;
+    max-width: 220px;
+  }
+
+  .mega-project-img {
+    height: 150px;
+  }
+
+  .mega-project-info {
+    opacity: 1;
+    position: static;
+    background: rgba(30, 30, 40, 0.95);
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .project-popup-content {
+    margin: 14px auto;
+    padding: 16px 12px;
+    border-radius: 12px;
+  }
+
+  .project-popup-close {
+    top: 10px;
+    right: 12px;
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .project-popup-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  #videoProductionPopup,
+  #hubVideoPopup {
+    margin: 16px auto !important;
+    max-width: calc(100vw - 20px) !important;
+  }
+
+  #section-counter .portfolio-box-marquee {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}

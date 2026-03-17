@@ -785,31 +785,46 @@
             const megaProjectBtns = $('#megaProjectBtn, #megaProjectNavBtn, #megaProjectAboutBtn');
             const megaProjectModal = $('#megaProjectModal');
             const megaCloseBtn = $('#megaCloseBtn');
+            const body = $('body');
+
+            function clearScrollLock() {
+              body.removeClass('mega-modal-open project-popup-open').css('overflow', '');
+            }
+
+            function openMegaModal() {
+              megaProjectModal.addClass('active');
+              body.addClass('mega-modal-open').css('overflow', 'hidden');
+            }
+
+            function closeMegaModal() {
+              megaProjectModal.removeClass('active');
+              clearScrollLock();
+            }
+
+            // Recover from any stale lock state on reload/navigation.
+            clearScrollLock();
+
             megaProjectBtns.on('click', function(e) {
               e.preventDefault();
-              console.log('Opening modal');
-              megaProjectModal.addClass('active');
-              $('body').addClass('mega-modal-open').css('overflow', 'hidden');
+              openMegaModal();
             });
             megaCloseBtn.on('click', function() {
-              megaProjectModal.removeClass('active');
-              $('body').removeClass('mega-modal-open').css('overflow', '');
+              closeMegaModal();
             });
             megaProjectModal.on('click', function(e) {
               if (e.target === this) {
-                megaProjectModal.removeClass('active');
-                $('body').removeClass('mega-modal-open').css('overflow', '');
+                closeMegaModal();
               }
             });
             // Project popup close
             $('#projectPopupClose').on('click', function() {
               $('#projectPopupModal').removeClass('active');
-              $('body').removeClass('project-popup-open');
+              clearScrollLock();
             });
             $('#projectPopupModal').on('click', function(e) {
               if (e.target === this) {
                 $('#projectPopupModal').removeClass('active');
-                $('body').removeClass('project-popup-open');
+                clearScrollLock();
               }
             });
             // Sample gallery images for each project title

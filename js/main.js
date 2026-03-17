@@ -275,18 +275,19 @@
 		const megaProjectBtn = $('#megaProjectBtn');
 		const megaProjectModal = $('#megaProjectModal');
 		const megaCloseBtn = $('#megaCloseBtn');
+		const body = $('body');
 		megaProjectBtn.on('click', function() {
 			megaProjectModal.addClass('active');
-			$('body').css('overflow', 'hidden');
+			body.addClass('mega-modal-open').css('overflow', 'hidden');
 		});
 		megaCloseBtn.on('click', function() {
 			megaProjectModal.removeClass('active');
-			$('body').css('overflow', '');
+			body.removeClass('mega-modal-open').css('overflow', '');
 		});
 		megaProjectModal.on('click', function(e) {
 			if (e.target === this) {
 				megaProjectModal.removeClass('active');
-				$('body').css('overflow', '');
+				body.removeClass('mega-modal-open').css('overflow', '');
 			}
 		});
 		// Dynamic filter menu and horizontal scroll grid
