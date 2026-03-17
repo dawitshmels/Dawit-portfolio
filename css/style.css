@@ -10009,6 +10009,21 @@ textarea.form-control {
     overflow-x: hidden;
   }
 
+  /* Safety: keep page scroll enabled unless a project overlay is open */
+  body:not(.mega-modal-open):not(.project-popup-open) {
+    overflow-y: auto !important;
+    position: static !important;
+    height: auto !important;
+    width: auto !important;
+  }
+
+  body.menu-show {
+    overflow-y: auto !important;
+    position: static !important;
+    height: auto !important;
+    width: auto !important;
+  }
+
   .owl-carousel.home-slider,
   .owl-carousel.home-slider .slider-item,
   .owl-carousel.home-slider .slider-item .slider-text {

@@ -271,6 +271,17 @@
 
 	// Mega Project Hub logic
 	$(function() {
+		function releaseBodyScrollIfNoOverlay() {
+			var isMegaOpen = $('#megaProjectModal').hasClass('active');
+			var isProjectPopupOpen = $('#projectPopupModal').hasClass('active');
+			if (!isMegaOpen && !isProjectPopupOpen) {
+				$('body').removeClass('mega-modal-open project-popup-open menu-show').css('overflow', '');
+			}
+		}
+
+		releaseBodyScrollIfNoOverlay();
+		$(window).on('pageshow', releaseBodyScrollIfNoOverlay);
+
 		// Modal logic and jQuery filtering
 		const megaProjectBtn = $('#megaProjectBtn');
 		const megaProjectModal = $('#megaProjectModal');
@@ -283,11 +294,13 @@
 		megaCloseBtn.on('click', function() {
 			megaProjectModal.removeClass('active');
 			body.removeClass('mega-modal-open').css('overflow', '');
+			releaseBodyScrollIfNoOverlay();
 		});
 		megaProjectModal.on('click', function(e) {
 			if (e.target === this) {
 				megaProjectModal.removeClass('active');
 				body.removeClass('mega-modal-open').css('overflow', '');
+				releaseBodyScrollIfNoOverlay();
 			}
 		});
 		// Dynamic filter menu and horizontal scroll grid
